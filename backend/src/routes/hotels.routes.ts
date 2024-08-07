@@ -21,4 +21,6 @@ router.post(
     Controllers.hotelsController
 );
 
+router.get('/', protectRoute, Controllers.getAllHotelsController);
+
 export default router;

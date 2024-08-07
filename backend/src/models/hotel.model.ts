@@ -1,23 +1,5 @@
 import mongoose from 'mongoose';
-import { BookingType } from '../shared/types';
-
-export type HotelType = {
-    _id: string;
-    userId: string;
-    name: string;
-    city: string;
-    country: string;
-    description: string;
-    type: string;
-    adultCount: number;
-    childCount: number;
-    facilities: string[];
-    pricePerNight: number;
-    starRating: number;
-    imageUrls: string[];
-    lastUpdated: Date;
-};
-
+import { HotelType, BookingType } from '../shared/types';
 const bookingSchema = new mongoose.Schema<BookingType>({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },

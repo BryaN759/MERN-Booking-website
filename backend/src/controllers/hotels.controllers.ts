@@ -25,3 +25,12 @@ export const hotelsController = async (req: Request, res: Response) => {
         res.status(201).send(hotel);
     } catch (error) {}
 };
+
+export const getAllHotelsController = async (req: Request, res: Response) => {
+    try {
+        const hotels = await Hotel.find({ userId: req.userId });
+        res.json(hotels);
+    } catch (error) {
+        res.status(500).json({ message: ' Error fetching hotels' });
+    }
+};
