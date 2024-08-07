@@ -4,8 +4,16 @@ import morgan from 'morgan';
 import 'dotenv/config';
 import connectDB from './config/db';
 import userRoutes from './routes/user.routes';
+import hotelRoutes from './routes/hotels.routes';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const app = express();
 app.use(cookieParser());
@@ -24,6 +32,11 @@ const port = 7000;
 app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
 app.use('/api/users', userRoutes);
+app.use('/api/my-hotels', hotelRoutes);
+
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+});
 
 const runServer = () => {
     app.listen(port, () => {
