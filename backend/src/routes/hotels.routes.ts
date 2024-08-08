@@ -23,4 +23,12 @@ router.post(
 
 router.get('/', protectRoute, Controllers.getAllHotelsController);
 
+router.get('/:id', protectRoute, Controllers.fetchHotelByIdController);
+router.put(
+    '/:id',
+    protectRoute,
+    upload.array('imageFiles'),
+    Controllers.editHotelController
+);
+
 export default router;

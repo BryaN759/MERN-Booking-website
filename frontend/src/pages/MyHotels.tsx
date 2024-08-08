@@ -1,15 +1,15 @@
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import * as apiClient from '../api';
 import { useAppContext } from '../contexts/AppContext';
 import { BsBuilding, BsMap } from 'react-icons/bs';
 import { BiHotel, BiMoney, BiStar } from 'react-icons/bi';
+import * as apiClient from '../api';
 
 const MyHotels = () => {
     const { showToast } = useAppContext();
     const { data: hotelData } = useQuery(
         'fetchMyHotels',
-        apiClient.fetchMyHotel,
+        apiClient.fetchMyHotels,
         {
             onError: () => {
                 showToast({ message: 'Error Fetching Hotel', type: 'ERROR' });
