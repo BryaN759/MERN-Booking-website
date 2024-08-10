@@ -2,7 +2,9 @@ import { Request, Response } from 'express';
 import Hotel from '../models/hotel.model';
 import { HotelSearchResponse } from '../shared/types';
 
-// export const viewDetailController = async (req: Request, res: Response) => {};
+export const viewDetailController = async (req: Request, res: Response) => {
+    console.log('Next');
+};
 
 export const searchController = async (req: Request, res: Response) => {
     try {
