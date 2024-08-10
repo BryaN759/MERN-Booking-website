@@ -1,5 +1,5 @@
 import express from 'express';
-import * as Controllers from '../controllers/hotels.controllers';
+import * as Controllers from '../controllers/myhotels.controllers';
 import protectRoute from '../middleware/auth.middleware';
 import multer from 'multer';
 

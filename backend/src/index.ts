@@ -4,7 +4,8 @@ import morgan from 'morgan';
 import 'dotenv/config';
 import connectDB from './config/db';
 import userRoutes from './routes/user.routes';
-import hotelRoutes from './routes/hotels.routes';
+import myHotelRoutes from './routes/myhotels.routes';
+import hotelRoutes from './routes/thehotels.routes';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import { v2 as cloudinary } from 'cloudinary';
@@ -32,7 +33,8 @@ const port = 7000;
 app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
 app.use('/api/users', userRoutes);
-app.use('/api/my-hotels', hotelRoutes);
+app.use('/api/my-hotels', myHotelRoutes);
+app.use('/api/hotels', hotelRoutes);
 
 app.get('*', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
