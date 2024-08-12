@@ -3,7 +3,17 @@ import Hotel from '../models/hotel.model';
 import { HotelSearchResponse } from '../shared/types';
 
 export const viewDetailController = async (req: Request, res: Response) => {
-    console.log('Next');
+    const hotelId = req.params.id.toString();
+    if (!hotelId) {
+        res.status(400).json({ message: 'Hotel Id is required!' });
+    }
+    try {
+        const hotel = await Hotel.findById(hotelId);
+        res.json(hotel);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error fetching hotel' });
+    }
 };
 
 export const searchController = async (req: Request, res: Response) => {
