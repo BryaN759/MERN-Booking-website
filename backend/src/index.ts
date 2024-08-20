@@ -9,7 +9,9 @@ import hotelRoutes from './routes/thehotels.routes';
 import myBookingsRoutes from './routes/mybookings.routes';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import job from './config/cron';
 
+job.start();
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
